@@ -1,0 +1,37 @@
+`timescale 1ns/1ps
+module segled_tb;
+
+reg 				signal_clk;
+reg 				signal_sw;
+wire 	[7:0]		signal_segled;
+wire 	[7:0]		signal_DSN;
+reg 	[2:0]		D=3;
+reg 	[5:0]		Tem=20;
+reg 	[5:0]		Time=21;
+reg   [9:0]		tem;//for循环需要的计数器
+Segled s1(//例化测试模块
+	.clk(signal_clk),
+	.D(D),
+	.sw(signal_sw),
+	.Tem(Tem),
+	.Time(Time),
+	.segled(signal_segled),
+	.DSN(signal_DSN)
+);
+
+initial begin
+	for(tem=0;tem<20;tem=tem+1)begin
+	signal_clk=0;
+	#100;
+	signal_clk=1;
+	#100;
+	end
+	$stop;	
+end
+initial begin
+	signal_sw=1;
+	#1000;
+	D=2;	
+end
+
+endmodule

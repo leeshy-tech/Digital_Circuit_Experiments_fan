@@ -1,0 +1,35 @@
+module fix_time(							//定时功能模块
+input 						clk,			//1kHz时钟
+input 						sw,			//开机开关
+input 			[4:0]		ANJIAN,		//消抖过的按键脉冲
+output reg 		[1:0]		time_model,	//模式，0表示未开始定时，1表示正处在定时模式，2表示退出了定时模式
+output reg 		[5:0]		Time			//定时时间
+);
+
+reg 				[9:0]		count; 		//计数变量，用于实现1s倒计时，值为0-1000
+parameter 					N=1000;
+
+initial begin								//初始化
+	Time<=0;
+	time_model<=0;
+	count<=0;
+end
+
+always@(posedge clk)begin
+	if(time_model==1)begin
+		count<=count+1;
+		if(count==N)begin											//实现倒计时，每过1ms×1000=1s时，Time减一
+			if(Time>0)Time<=Time-1;
+			else time_model<=2;
+			count<=0;
+		end
+		else;
+	end
+	else begin
+		if(ANJIAN[2]) Time<=Time+1;else;						//三个按键只有在定时模式未开始时实现各自的功能
+		if(ANJIAN[3]) Time<=Time-1;else;
+		if(ANJIAN[4]) time_model<=1;else;
+	end
+	if(!sw)time_model<=0;else;    						 	//重新开机时要保证定时功能可用
+end
+endmodule

@@ -1,0 +1,23 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -vlog01compat -work work +incdir+B:/BPUTproject/Fan {B:/BPUTproject/Fan/CLK_n.v}
+vlog -vlog01compat -work work +incdir+B:/BPUTproject/Fan {B:/BPUTproject/Fan/debounce.v}
+vlog -vlog01compat -work work +incdir+B:/BPUTproject/Fan {B:/BPUTproject/Fan/picture.v}
+vlog -vlog01compat -work work +incdir+B:/BPUTproject/Fan {B:/BPUTproject/Fan/fix_time.v}
+vlog -vlog01compat -work work +incdir+B:/BPUTproject/Fan {B:/BPUTproject/Fan/Segled.v}
+vlog -vlog01compat -work work +incdir+B:/BPUTproject/Fan {B:/BPUTproject/Fan/Fan.v}
+vlog -vlog01compat -work work +incdir+B:/BPUTproject/Fan {B:/BPUTproject/Fan/LCD1602.v}
+
+vlog -vlog01compat -work work +incdir+B:/BPUTproject/Fan {B:/BPUTproject/Fan/picture_tb.v}
+
+vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L maxii_ver -L rtl_work -L work -voptargs="+acc"  picture_tb
+
+add wave *
+view structure
+view signals
+run -all

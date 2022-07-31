@@ -1,0 +1,111 @@
+# Reading pref.tcl
+# do Fan_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+B:/BPUTproject/Fan {B:/BPUTproject/Fan/CLK_n.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 02:02:03 on Dec 17,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+B:/BPUTproject/Fan" B:/BPUTproject/Fan/CLK_n.v 
+# -- Compiling module CLK_n
+# 
+# Top level modules:
+# 	CLK_n
+# End time: 02:02:03 on Dec 17,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+B:/BPUTproject/Fan {B:/BPUTproject/Fan/debounce.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 02:02:03 on Dec 17,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+B:/BPUTproject/Fan" B:/BPUTproject/Fan/debounce.v 
+# -- Compiling module debounce
+# 
+# Top level modules:
+# 	debounce
+# End time: 02:02:03 on Dec 17,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+B:/BPUTproject/Fan {B:/BPUTproject/Fan/picture.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 02:02:03 on Dec 17,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+B:/BPUTproject/Fan" B:/BPUTproject/Fan/picture.v 
+# -- Compiling module picture
+# 
+# Top level modules:
+# 	picture
+# End time: 02:02:03 on Dec 17,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+B:/BPUTproject/Fan {B:/BPUTproject/Fan/fix_time.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 02:02:03 on Dec 17,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+B:/BPUTproject/Fan" B:/BPUTproject/Fan/fix_time.v 
+# -- Compiling module fix_time
+# 
+# Top level modules:
+# 	fix_time
+# End time: 02:02:03 on Dec 17,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+B:/BPUTproject/Fan {B:/BPUTproject/Fan/Segled.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 02:02:03 on Dec 17,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+B:/BPUTproject/Fan" B:/BPUTproject/Fan/Segled.v 
+# -- Compiling module Segled
+# 
+# Top level modules:
+# 	Segled
+# End time: 02:02:03 on Dec 17,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+B:/BPUTproject/Fan {B:/BPUTproject/Fan/Fan.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 02:02:03 on Dec 17,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+B:/BPUTproject/Fan" B:/BPUTproject/Fan/Fan.v 
+# -- Compiling module Fan
+# 
+# Top level modules:
+# 	Fan
+# End time: 02:02:04 on Dec 17,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+B:/BPUTproject/Fan {B:/BPUTproject/Fan/LCD1602.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 02:02:04 on Dec 17,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+B:/BPUTproject/Fan" B:/BPUTproject/Fan/LCD1602.v 
+# -- Compiling module LCD1602
+# 
+# Top level modules:
+# 	LCD1602
+# End time: 02:02:04 on Dec 17,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+B:/BPUTproject/Fan {B:/BPUTproject/Fan/segled_tb.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 02:02:04 on Dec 17,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+B:/BPUTproject/Fan" B:/BPUTproject/Fan/segled_tb.v 
+# -- Compiling module segled_tb
+# 
+# Top level modules:
+# 	segled_tb
+# End time: 02:02:04 on Dec 17,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L maxii_ver -L rtl_work -L work -voptargs="+acc"  segled_tb
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L maxii_ver -L rtl_work -L work -voptargs=""+acc"" segled_tb 
+# Start time: 02:02:04 on Dec 17,2020
+# Loading work.segled_tb
+# Loading work.Segled
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# ** Note: $stop    : B:/BPUTproject/Fan/segled_tb.v(29)
+#    Time: 4 us  Iteration: 0  Instance: /segled_tb
+# Break in Module segled_tb at B:/BPUTproject/Fan/segled_tb.v line 29
+# End time: 02:14:14 on Dec 17,2020, Elapsed time: 0:12:10
+# Errors: 0, Warnings: 0

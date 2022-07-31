@@ -1,0 +1,28 @@
+module CLK_n(								//时钟分频模块
+input 				clk,					//1kHz时钟
+input 		[9:0]	n,						//控制分频的倍数，最大是1000
+output reg 			clk_n					//n倍分频时钟
+);
+
+reg 			[9:0]	count; 
+
+initial begin
+	count<=0;
+	clk_n=0;
+end
+
+//在接收到第n-1个上升沿时，产生一个clk周期的脉冲
+always@(posedge clk)begin				
+	if(count<n-2)count<=count+1;
+	else if(count==n-2)begin
+		clk_n<=1;
+		count<=count+1;
+	end
+	else if(count==n-1)begin
+		clk_n<=0;
+		count<=0;
+	end
+	else count<=0;
+end
+
+endmodule

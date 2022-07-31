@@ -1,0 +1,257 @@
+module picture(				//点阵显示模块
+input 					clk,	//1kHz时钟
+input 	  [2:0]		P,		//控制不同图案的显示，范围是0-4
+output reg [7:0]		hang,	//点阵的行信号
+output reg [7:0]		red,	//点阵列的红灯信号
+output reg [7:0]		green	//点阵列的绿灯信号
+);
+
+reg 		  [2:0]		tem;	//引入中间变量用于计数
+
+initial begin					//初始化
+	tem<=0;
+	hang<=8'b1111_1111;
+	red<=8'b0000_0000;
+	green<=8'b0000_0000;
+end
+
+always@(posedge clk)begin
+	if(P==0)begin				//关机状态点阵全灭
+		hang<=8'b1111_1111;
+		red<=8'b0000_0000;
+		green<=8'b0000_0000;
+	end
+	else if(P==1)begin		//显示第一个图案
+		if(tem==3'b000)begin	
+			hang<=8'b0111_1111;
+			green<=8'b0001_0000;
+			red<=8'b0000_0000;
+			tem<=tem+1;
+		end
+
+		else if(tem==3'b001) begin 
+			hang<=8'b1011_1111;
+			green<=8'b0001_0000;
+			red<=8'b0000_0000;
+			tem<=tem+1;//2
+		end
+
+		else if(tem==3'b010) begin 
+			hang<=8'b1101_1111;
+			green<=8'b0001_0000;
+			red<=8'b0000_0000;
+			tem<=tem+1;//3
+		end
+
+		else if(tem==3'b011) begin 
+			hang<=8'b1110_1111;
+			green<=8'b0001_0000;
+			red<=8'b0000_1111;
+			tem<=tem+1;//4
+		end
+
+		else if(tem==3'b100) begin 
+			hang<=8'b1111_0111;
+			green<=8'b0000_1000;
+			red<=8'b1111_0000;
+			tem<=tem+1;//5
+		end
+
+		else if(tem==3'b101) begin 
+			hang<=8'b1111_1011;
+			green<=8'b0000_1000;
+			red<=8'b0000_0000;
+			tem<=tem+1;//6
+		end
+
+		else if(tem==3'b110) begin 
+			hang<=8'b1111_1101;
+			green<=8'b0000_1000;
+			red<=8'b0000_0000;
+			tem<=tem+1;//7
+		end
+
+		else if(tem==3'b111) begin 
+			hang<=8'b1111_1110;
+			green<=8'b0000_1000;
+			red<=8'b0000_0000;
+			tem<=tem+1;//8
+		end
+	end
+
+	else if(P==2)begin		//显示第二个图案
+		if(tem==3'b000)begin
+			hang<=8'b0111_1111;
+			green<=8'b1000_0000;
+			red<=8'b0000_0001;
+			tem<=tem+1;
+		end//1
+
+		else if(tem==3'b001) begin 
+			hang<=8'b1011_1111;
+			green<=8'b0100_0000;
+			red<=8'b0000_0010;
+			tem<=tem+1;//2
+		end
+
+		else if(tem==3'b010) begin 
+			hang<=8'b1101_1111;
+			green<=8'b0010_0000;
+			red<=8'b0000_0100;
+			tem<=tem+1;//3
+		end
+
+		else if(tem==3'b011) begin 
+			hang<=8'b1110_1111;
+			green<=8'b0001_0000;
+			red<=8'b0000_1000;
+			tem<=tem+1;//4
+		end
+
+		else if(tem==3'b100) begin 
+			hang<=8'b1111_0111;
+			green<=8'b0000_1000;
+			red<=8'b00010000;
+			tem<=tem+1;//5
+		end
+
+		else if(tem==3'b101) begin 
+			hang<=8'b1111_1011;
+			green<=8'b0000_0100;
+			red<=8'b0010_0000;
+			tem<=tem+1;//6
+		end
+
+		else if(tem==3'b110) begin 
+			hang<=8'b1111_1101;
+			green<=8'b0000_0010;
+			red<=8'b0100_0000;
+			tem<=tem+1;//7
+		end
+
+		else if(tem==3'b111) begin 
+			hang<=8'b1111_1110;
+			green<=8'b0000_0001;
+			red<=8'b1000_0000;
+			tem<=tem+1;//8
+		end
+	end
+
+	else if(P==3)begin		//显示第三个图案
+		if(tem==3'b000)begin
+			hang<=8'b0111_1111;
+			red<=8'b0001_0000;
+			green<=8'b0000_0000;
+			tem<=tem+1;
+		end//1
+
+		else if(tem==3'b001) begin 
+			hang<=8'b1011_1111;
+			red<=8'b0001_0000;
+			green<=8'b0000_0000;
+			tem<=tem+1;//2
+		end
+
+		else if(tem==3'b010) begin 
+			hang<=8'b1101_1111;
+			red<=8'b0001_0000;
+			green<=8'b0000_0000;
+			tem<=tem+1;//3
+		end
+
+		else if(tem==3'b011) begin 
+			hang<=8'b1110_1111;
+			red<=8'b0001_0000;
+			green<=8'b0000_1111;
+			tem<=tem+1;//4
+		end
+
+		else if(tem==3'b100) begin 
+			hang<=8'b1111_0111;
+			red<=8'b0000_1000;
+			green<=8'b1111_0000;
+			tem<=tem+1;//5
+		end
+
+		else if(tem==3'b101) begin 
+			hang<=8'b1111_1011;
+			red<=8'b0000_1000;
+			green<=8'b0000_0000;
+			tem<=tem+1;//6
+		end
+
+		else if(tem==3'b110) begin 
+			hang<=8'b1111_1101;
+			red<=8'b0000_1000;
+			green<=8'b0000_0000;
+			tem<=tem+1;//7
+		end
+
+		else if(tem==3'b111) begin 
+			hang<=8'b1111_1110;
+			red<=8'b0000_1000;
+			green<=8'b0000_0000;
+			tem<=tem+1;//8
+		end
+	end
+	else if(P==4)begin		//显示第四个图案
+		if(tem==3'b000)begin
+			hang<=8'b0111_1111;
+			red<=8'b1000_0000;
+			green<=8'b0000_0001;
+			tem<=tem+1;
+		end//1
+
+		else if(tem==3'b001) begin 
+			hang<=8'b1011_1111;
+			red<=8'b0100_0000;
+			green<=8'b0000_0010;
+			tem<=tem+1;//2
+		end
+
+		else if(tem==3'b010) begin 
+			hang<=8'b1101_1111;
+			red<=8'b0010_0000;
+			green<=8'b0000_0100;
+			tem<=tem+1;//3
+		end
+
+		else if(tem==3'b011) begin 
+			hang<=8'b1110_1111;
+			red<=8'b0001_0000;
+			green<=8'b0000_1000;
+			tem<=tem+1;//4
+		end
+
+		else if(tem==3'b100) begin 
+			hang<=8'b1111_0111;
+			red<=8'b0000_1000;
+			green<=8'b00010000;
+			tem<=tem+1;//5
+		end
+
+		else if(tem==3'b101) begin 
+			hang<=8'b1111_1011;
+			red<=8'b0000_0100;
+			green<=8'b0010_0000;
+			tem<=tem+1;//6
+		end
+
+		else if(tem==3'b110) begin 
+			hang<=8'b1111_1101;
+			red<=8'b0000_0010;
+			green<=8'b0100_0000;
+			tem<=tem+1;//7
+		end
+
+		else if(tem==3'b111) begin 
+			hang<=8'b1111_1110;
+			red<=8'b0000_0001;
+			green<=8'b1000_0000;
+			tem<=tem+1;//8
+		end
+	end
+	else ;
+end
+
+endmodule

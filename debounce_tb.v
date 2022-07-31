@@ -1,0 +1,66 @@
+`timescale 1ms/1ps
+module debounce_tb;
+reg 				signal_clk;
+reg 	[4:0]		signal_anjian;
+wire 	[4:0]		signal_ANJIAN;
+reg   [9:0]		tem;
+debounce u1(
+	.clk(signal_clk),
+	.key(~signal_anjian),
+	.key_pulse(signal_ANJIAN)
+);
+initial begin
+	signal_anjian<=5'b00000;
+for(tem=0;tem<500;tem=tem+1)begin
+	signal_clk=0;
+	#1;
+	signal_clk=1;
+	#1;
+end
+	$stop;
+end
+initial begin
+#3;
+signal_anjian<=5'b10000;
+#3;
+signal_anjian<=5'b00000;
+#3;
+signal_anjian<=5'b10000;
+#3;
+signal_anjian<=5'b00000;
+#3;
+signal_anjian<=5'b10000;
+#200;
+signal_anjian<=5'b00000;
+#3;
+signal_anjian<=5'b10000;
+#3;
+signal_anjian<=5'b00000;
+#3;
+signal_anjian<=5'b10000;
+#3;
+signal_anjian<=5'b00000;
+#200;
+#3;
+signal_anjian<=5'b10000;
+#3;
+signal_anjian<=5'b00000;
+#3;
+signal_anjian<=5'b10000;
+#3;
+signal_anjian<=5'b00000;
+#3;
+signal_anjian<=5'b10000;
+#200;
+signal_anjian<=5'b00000;
+#3;
+signal_anjian<=5'b10000;
+#3;
+signal_anjian<=5'b00000;
+#3;
+signal_anjian<=5'b10000;
+#3;
+signal_anjian<=5'b00000;
+#200;
+end
+endmodule

@@ -1,0 +1,139 @@
+module Segled(					//数码管显示模块
+input clk,						//1kHz时钟
+input sw,						//开机开关
+input [2:0]D,					//档位D的范围是1-4
+input [5:0]Tem,				//温度Tem的范围是10-40
+input [5:0]Time,				//定时Time的范围是10-39
+//模块之间只能传递0和1，故传递参数时要用二进制
+ 
+output reg [7:0]segled,		//数码管段码的控制信号
+output reg [7:0]DSN			//数码管位码的控制信号
+);
+ 
+reg [2:0]tem;					//计数中间变量，控制数码管的频闪
+ 
+initial begin					//初始化
+	segled=8'b0000_0000;
+	DSN=8'b1111_1111;
+	tem=3'b000;	
+end
+
+always @(posedge clk)begin
+if(sw)begin//开机
+	//第一个数码管显示档位
+	if(tem==3'b000)begin
+		DSN=8'b0111_1111;
+		case(D)
+		0:segled=8'b0011_1111;
+		1:segled=8'b0000_0110;
+		2:segled=8'b0101_1011;
+		3:segled=8'b0100_1111;
+		4:segled=8'b0110_0110;
+		5:segled=8'b0110_1101;
+		6:segled=8'b0111_1101;
+		7:segled=8'b0000_0111;
+		8:segled=8'b0111_1111;
+		9:segled=8'b0110_1111;
+		default:;
+		endcase
+		tem<=tem+1;
+	end
+	//第二个数码管不使用
+	else if(tem==3'b001) begin 
+		DSN=8'b1011_1111;
+		segled=8'b0000_0000;
+		tem<=tem+1;
+	end
+	//第三个数码管显示温度的十位
+	else if(tem==3'b010) begin 
+		DSN=8'b1101_1111;
+		case(Tem/10)
+		0:segled=8'b0011_1111;
+		1:segled=8'b0000_0110;
+		2:segled=8'b0101_1011;
+		3:segled=8'b0100_1111;
+		4:segled=8'b0110_0110;
+		5:segled=8'b0110_1101;
+		6:segled=8'b0111_1101;
+		7:segled=8'b0000_0111;
+		8:segled=8'b0111_1111;
+		9:segled=8'b0110_1111;
+		default:;
+		endcase
+		tem<=tem+1;
+	end
+	//第四个数码管显示温度的个位
+	else if(tem==3'b011) begin 
+		DSN=8'b1110_1111;
+		case(Tem%10)
+		0:segled=8'b0011_1111;
+		1:segled=8'b0000_0110;
+		2:segled=8'b0101_1011;
+		3:segled=8'b0100_1111;
+		4:segled=8'b0110_0110;
+		5:segled=8'b0110_1101;
+		6:segled=8'b0111_1101;
+		7:segled=8'b0000_0111;
+		8:segled=8'b0111_1111;
+		9:segled=8'b0110_1111;
+		default:;
+		endcase
+		tem<=tem+1;
+	end
+	//第五个数码管显示定时时间的十位
+	else if(tem==3'b100) begin 
+		DSN=8'b1111_0111;
+		case(Time/10)
+		0:segled=8'b0011_1111;
+		1:segled=8'b0000_0110;
+		2:segled=8'b0101_1011;
+		3:segled=8'b0100_1111;
+		4:segled=8'b0110_0110;
+		5:segled=8'b0110_1101;
+		6:segled=8'b0111_1101;
+		7:segled=8'b0000_0111;
+		8:segled=8'b0111_1111;
+		9:segled=8'b0110_1111;
+		default:;
+		endcase
+		tem<=tem+1;
+	end
+	//第六个数码管显示定时时间的个位
+	else if(tem==3'b101) begin 
+		DSN=8'b1111_1011;
+		case(Time%10)
+		0:segled=8'b0011_1111;
+		1:segled=8'b0000_0110;
+		2:segled=8'b0101_1011;
+		3:segled=8'b0100_1111;
+		4:segled=8'b0110_0110;
+		5:segled=8'b0110_1101;
+		6:segled=8'b0111_1101;
+		7:segled=8'b0000_0111;
+		8:segled=8'b0111_1111;
+		9:segled=8'b0110_1111;
+		default:;
+		endcase
+		tem<=tem+1;
+	end
+	//第七个数码管不使用
+	else if(tem==3'b110) begin 
+		DSN=8'b1111_1101;
+		segled=8'b0000_0000;
+		tem<=tem+1;
+	end
+	//第八个数码管不使用
+	else if(tem==3'b111) begin 
+		DSN=8'b1111_1110;
+		segled=8'b0000_0000;
+		tem<=tem+1;
+	end
+end
+else begin						//关机状态数码管全灭
+	segled=8'b0000_0000;
+	DSN=8'b1111_1111;
+	tem=3'b000;	
+end
+
+end
+endmodule

@@ -1,0 +1,112 @@
+module Fan(
+input 					clk,				//时钟输入
+input 					sw,				//风扇开关
+input 		[4:0]		anjian,			//按键输入
+
+output		[7:0]		hang,				//点阵的行信号
+output		[7:0]		red,				//点阵列的红灯信号
+output		[7:0]		green,			//点阵列的绿灯信号
+
+output reg 	[7:0]		segled,			//数码管段码的控制信号
+output reg 	[7:0]		DSN				//数码管位码的控制信号
+);
+
+wire		   [4:0]		ANJIAN;			//消抖过的按键脉冲
+reg 		   [5:0]		Tem;				//温度
+wire 						clk_n;				//频率可变时钟，来控制点阵图案切换的速度
+reg 			[2:0]		P;					//显示图案的序号
+reg 			[9:0]		n1;				//控制时钟1的分频倍数
+reg 			[9:0]		n2;				//控制时钟2的分频倍数
+reg 			[2:0]		D;					//档位
+wire 			[5:0]		Time;				//定时时间
+wire 			[1:0]		time_model;		//判断是否是定时模式
+
+initial begin								//初始化
+	Tem<=20;
+	n1<=0;
+	n2<=0;
+	P<=0;
+	D<=1;
+end
+
+//按键消抖
+debounce u1(
+	.clk(clk),
+	.key(~anjian),
+	.key_pulse(ANJIAN)
+);
+//点阵显示模块
+picture p1(
+	.clk(clk),
+	.P(P),
+	.hang(hang),
+	.red(red),
+	.green(green)
+);
+//定时功能模块
+fix_time ft1(
+	.clk(clk),
+	.sw(sw),
+	.ANJIAN(ANJIAN),
+	.time_model(time_model),
+	.Time(Time)
+);
+//数码管显示模块
+Segled s1(
+	.clk(clk),
+	.sw(sw),
+	.D(D),
+	.Tem(Tem),
+	.Time(Time),
+	.segled(segled),
+	.DSN(DSN)
+);
+//调用分频模块生成频率可变的时钟CLK
+CLK_n c1(
+	.clk(clk),
+	.n(n2),
+	.clk_n(clk_n)
+);
+//控制温度加减
+always@(posedge clk)begin
+	if(sw)begin									//开机时温度才能通过按键加减
+		if(Tem>10)begin
+			if(ANJIAN[1]) Tem<=Tem-1;else;
+		end else;
+		if(Tem<40)begin
+			if(ANJIAN[0]) Tem<=Tem+1;else;
+		end else;
+	end
+	else Tem<=20;								//关机时温度默认20
+end
+//温度范围对应不同档位
+always@(posedge clk)begin
+	if(time_model==0||time_model==1)begin
+		if     (Tem>=10&&Tem<=19)D<=4;
+		else if(Tem>=20&&Tem<=24)D<=1;
+		else if(Tem>=25&&Tem<=29)D<=2;
+		else if(Tem>=30&&Tem<=40)D<=3;
+		else;
+		end
+	else if(time_model==2)D<=4;			//退出定时模式后图案不切换
+		else ;
+end
+//根据档位控制可变时钟频率，n2为分频倍数，0倍分频时图案不变换
+always@(posedge clk)begin
+	case(D)
+		1:n2<=1000;
+		2:n2<=500;
+		3:n2<=250;
+		4:n2<=0;
+		default:;
+	endcase
+end
+//控制图案的切换，开机状态从1-4切换，关机状态P=0，表示点阵全灭
+always@(posedge clk_n)begin
+	if(sw)begin
+		if(P<4)P<=P+1;
+		else P<=1;
+	end
+	else P<=0;
+end
+endmodule

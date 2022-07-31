@@ -1,0 +1,207 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dB:/BPUTproject/Fan/simulation/modelsim
+vCLK_n
+Z1 !s110 1608141723
+!i10b 1
+!s100 `bk2W1dTmB<Ff9j`V?Ajo0
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I@@3>5?BJVO@YHZh:02cPQ3
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1608119735
+8B:/BPUTproject/Fan/CLK_n.v
+FB:/BPUTproject/Fan/CLK_n.v
+!i122 0
+L0 1 28
+Z4 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z5 !s108 1608141723.000000
+!s107 B:/BPUTproject/Fan/CLK_n.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+B:/BPUTproject/Fan|B:/BPUTproject/Fan/CLK_n.v|
+!i113 1
+Z6 o-vlog01compat -work work
+Z7 !s92 -vlog01compat -work work +incdir+B:/BPUTproject/Fan
+Z8 tCvgOpt 0
+n@c@l@k_n
+vdebounce
+R1
+!i10b 1
+!s100 e7WF?:IgjaoGShS<LQG[72
+R2
+I76HERf3V>YG?91PV4BTB=1
+R3
+R0
+w1608119731
+8B:/BPUTproject/Fan/debounce.v
+FB:/BPUTproject/Fan/debounce.v
+!i122 1
+L0 1 49
+R4
+r1
+!s85 0
+31
+R5
+!s107 B:/BPUTproject/Fan/debounce.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+B:/BPUTproject/Fan|B:/BPUTproject/Fan/debounce.v|
+!i113 1
+R6
+R7
+R8
+vFan
+Z9 !s110 1608141724
+!i10b 1
+!s100 WgnoVf]V:SW4DWm?9hN482
+R2
+I;[E^@]eW75kTbnK?7o9ZA3
+R3
+R0
+w1608132037
+8B:/BPUTproject/Fan/Fan.v
+FB:/BPUTproject/Fan/Fan.v
+!i122 5
+L0 1 122
+R4
+r1
+!s85 0
+31
+R5
+!s107 B:/BPUTproject/Fan/Fan.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+B:/BPUTproject/Fan|B:/BPUTproject/Fan/Fan.v|
+!i113 1
+R6
+R7
+R8
+n@fan
+vfix_time
+R1
+!i10b 1
+!s100 XnD>[hR_E7REf5mMYg5d;1
+R2
+IO^N2F[TY=9VY:`3ALaWMH0
+R3
+R0
+w1607962255
+8B:/BPUTproject/Fan/fix_time.v
+FB:/BPUTproject/Fan/fix_time.v
+!i122 3
+L0 1 39
+R4
+r1
+!s85 0
+31
+R5
+!s107 B:/BPUTproject/Fan/fix_time.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+B:/BPUTproject/Fan|B:/BPUTproject/Fan/fix_time.v|
+!i113 1
+R6
+R7
+R8
+vLCD1602
+R9
+!i10b 1
+!s100 7Pa1EmL3Pc8N0hjPaz`:f0
+R2
+If]9K?06_^]cS:adZ[LG[92
+R3
+R0
+w1608130496
+8B:/BPUTproject/Fan/LCD1602.v
+FB:/BPUTproject/Fan/LCD1602.v
+!i122 6
+L0 1 235
+R4
+r1
+!s85 0
+31
+Z10 !s108 1608141724.000000
+!s107 B:/BPUTproject/Fan/LCD1602.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+B:/BPUTproject/Fan|B:/BPUTproject/Fan/LCD1602.v|
+!i113 1
+R6
+R7
+R8
+n@l@c@d1602
+vpicture
+R1
+!i10b 1
+!s100 [WOO8P_S=61<T5kVA_f7g3
+R2
+I8PddFckQ0We61fUz3[KRO2
+R3
+R0
+w1608113458
+8B:/BPUTproject/Fan/picture.v
+FB:/BPUTproject/Fan/picture.v
+!i122 2
+L0 1 257
+R4
+r1
+!s85 0
+31
+R5
+!s107 B:/BPUTproject/Fan/picture.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+B:/BPUTproject/Fan|B:/BPUTproject/Fan/picture.v|
+!i113 1
+R6
+R7
+R8
+vSegled
+R1
+!i10b 1
+!s100 EkXm=LO110WnEU84fS2DO0
+R2
+I2nMOgB3<ZW^Pa<jhZXWhP3
+R3
+R0
+w1608119727
+8B:/BPUTproject/Fan/Segled.v
+FB:/BPUTproject/Fan/Segled.v
+!i122 4
+L0 1 138
+R4
+r1
+!s85 0
+31
+R5
+!s107 B:/BPUTproject/Fan/Segled.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+B:/BPUTproject/Fan|B:/BPUTproject/Fan/Segled.v|
+!i113 1
+R6
+R7
+R8
+n@segled
+vsegled_tb
+R9
+!i10b 1
+!s100 hYed=@zc1RN4>i8:8cl]a1
+R2
+InBCZVmYd2GzzQ:DmeOn;01
+R3
+R0
+w1608119729
+8B:/BPUTproject/Fan/segled_tb.v
+FB:/BPUTproject/Fan/segled_tb.v
+!i122 7
+L0 2 36
+R4
+r1
+!s85 0
+31
+R10
+!s107 B:/BPUTproject/Fan/segled_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+B:/BPUTproject/Fan|B:/BPUTproject/Fan/segled_tb.v|
+!i113 1
+R6
+R7
+R8

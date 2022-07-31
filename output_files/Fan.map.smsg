@@ -1,0 +1,4 @@
+Warning (10268): Verilog HDL information at Segled.v(20): always construct contains both blocking and non-blocking assignments File: B:/BPUTproject/Fan/Segled.v Line: 20
+Info (10281): Verilog HDL Declaration information at Segled.v(5): object "Tem" differs only in case from object "tem" in the same scope File: B:/BPUTproject/Fan/Segled.v Line: 5
+Info (10281): Verilog HDL Declaration information at Fan.v(4): object "anjian" differs only in case from object "ANJIAN" in the same scope File: B:/BPUTproject/Fan/Fan.v Line: 4
+Warning (10268): Verilog HDL information at LCD1602.v(21): always construct contains both blocking and non-blocking assignments File: B:/BPUTproject/Fan/LCD1602.v Line: 21

@@ -1,0 +1,31 @@
+`timescale 1ns/1ps
+module fan1_tb;
+
+	reg 				signal_clk;
+	wire	 [7:0]	signal_hang;
+	wire 	 [7:0]	signal_red;
+	wire 	 [7:0]	signal_green;
+	reg	 [2:0]	P=3;
+	reg  	 [9:0]	tem;
+fan f1(
+	.clk(signal_clk),
+	.P(P),
+	.hang(signal_hang),
+	.red(signal_red),
+	.green(signal_green)
+);
+initial begin
+for(tem=0;tem<20;tem=tem+1)begin
+	signal_clk=0;
+	#100;
+	signal_clk=1;
+	#100;
+	end
+	$stop;	
+end
+initial begin
+	#1000;
+	P=2;
+end
+
+endmodule

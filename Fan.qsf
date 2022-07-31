@@ -1,0 +1,146 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2020  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+# Date created = 23:37:31  December 11, 2020
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		Fan_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "MAX II"
+set_global_assignment -name DEVICE EPM1270T144C5
+set_global_assignment -name TOP_LEVEL_ENTITY Fan
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "23:37:31  DECEMBER 11, 2020"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.1.0 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name DEVICE_FILTER_PACKAGE "ANY QFP"
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 144
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR "-1"
+set_global_assignment -name POWER_EXT_SUPPLY_VOLTAGE_TO_REGULATOR 3.3V
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_timing
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
+set_global_assignment -name VERILOG_FILE CLK_n.v
+set_global_assignment -name VERILOG_FILE debounce.v
+set_global_assignment -name VERILOG_FILE picture.v
+set_global_assignment -name VERILOG_FILE fix_time.v
+set_global_assignment -name VERILOG_FILE Segled.v
+set_global_assignment -name VERILOG_FILE Fan.v
+set_location_assignment PIN_31 -to DSN[7]
+set_location_assignment PIN_30 -to DSN[6]
+set_location_assignment PIN_70 -to DSN[5]
+set_location_assignment PIN_69 -to DSN[4]
+set_location_assignment PIN_68 -to DSN[3]
+set_location_assignment PIN_67 -to DSN[2]
+set_location_assignment PIN_66 -to DSN[1]
+set_location_assignment PIN_63 -to DSN[0]
+set_location_assignment PIN_121 -to anjian[4]
+set_location_assignment PIN_91 -to anjian[3]
+set_location_assignment PIN_89 -to anjian[2]
+set_location_assignment PIN_20 -to anjian[1]
+set_location_assignment PIN_61 -to anjian[0]
+set_location_assignment PIN_18 -to clk
+set_location_assignment PIN_38 -to green[7]
+set_location_assignment PIN_39 -to green[6]
+set_location_assignment PIN_40 -to green[5]
+set_location_assignment PIN_41 -to green[4]
+set_location_assignment PIN_42 -to green[3]
+set_location_assignment PIN_43 -to green[2]
+set_location_assignment PIN_44 -to green[1]
+set_location_assignment PIN_45 -to green[0]
+set_location_assignment PIN_8 -to hang[7]
+set_location_assignment PIN_7 -to hang[6]
+set_location_assignment PIN_6 -to hang[5]
+set_location_assignment PIN_5 -to hang[4]
+set_location_assignment PIN_4 -to hang[3]
+set_location_assignment PIN_3 -to hang[2]
+set_location_assignment PIN_2 -to hang[1]
+set_location_assignment PIN_1 -to hang[0]
+set_location_assignment PIN_11 -to red[7]
+set_location_assignment PIN_12 -to red[6]
+set_location_assignment PIN_13 -to red[5]
+set_location_assignment PIN_14 -to red[4]
+set_location_assignment PIN_15 -to red[3]
+set_location_assignment PIN_16 -to red[2]
+set_location_assignment PIN_21 -to red[1]
+set_location_assignment PIN_22 -to red[0]
+set_location_assignment PIN_51 -to segled[7]
+set_location_assignment PIN_52 -to segled[6]
+set_location_assignment PIN_53 -to segled[5]
+set_location_assignment PIN_55 -to segled[4]
+set_location_assignment PIN_57 -to segled[3]
+set_location_assignment PIN_58 -to segled[2]
+set_location_assignment PIN_59 -to segled[1]
+set_location_assignment PIN_62 -to segled[0]
+set_location_assignment PIN_125 -to sw
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "NO HEAT SINK WITH STILL AIR"
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH segled_tb -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME CLK_n_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id CLK_n_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME CLK_n_tb -section_id CLK_n_tb
+set_global_assignment -name EDA_TEST_BENCH_NAME debounce_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id debounce_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME debounce_tb -section_id debounce_tb
+set_global_assignment -name EDA_TEST_BENCH_NAME fix_time_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id fix_time_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME fix_time_tb -section_id fix_time_tb
+set_global_assignment -name EDA_TEST_BENCH_NAME picture_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id picture_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME picture_tb -section_id picture_tb
+set_global_assignment -name EDA_TEST_BENCH_NAME segled_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id segled_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME segled_tb -section_id segled_tb
+set_global_assignment -name VERILOG_FILE LCD1602.v
+set_location_assignment PIN_108 -to LCD_E
+set_location_assignment PIN_48 -to LCD_RS
+set_location_assignment PIN_101 -to LCD_DATA[0]
+set_location_assignment PIN_110 -to LCD_DATA[1]
+set_location_assignment PIN_102 -to LCD_DATA[2]
+set_location_assignment PIN_103 -to LCD_DATA[3]
+set_location_assignment PIN_104 -to LCD_DATA[4]
+set_location_assignment PIN_105 -to LCD_DATA[5]
+set_location_assignment PIN_106 -to LCD_DATA[6]
+set_location_assignment PIN_107 -to LCD_DATA[7]
+set_global_assignment -name EDA_TEST_BENCH_FILE CLK_n_tb.v -section_id CLK_n_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE debounce_tb.v -section_id debounce_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE fix_time_tb.v -section_id fix_time_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE picture_tb.v -section_id picture_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE segled_tb.v -section_id segled_tb
